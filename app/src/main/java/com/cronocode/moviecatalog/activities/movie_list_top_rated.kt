@@ -1,8 +1,9 @@
-package com.cronocode.moviecatalog
+package com.cronocode.moviecatalog.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.models.Movie
 import com.cronocode.moviecatalog.models.MovieResponse
 import com.cronocode.moviecatalog.services.MovieApiInterface

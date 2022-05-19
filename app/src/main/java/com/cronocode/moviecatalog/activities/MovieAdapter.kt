@@ -1,11 +1,11 @@
-package com.cronocode.moviecatalog
+package com.cronocode.moviecatalog.activities
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.BoolRes
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.models.Movie
 import kotlinx.android.synthetic.main.movie_item.view.*
 

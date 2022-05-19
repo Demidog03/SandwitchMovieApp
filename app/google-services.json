@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "592504742101",
+    "project_id": "sandwitchmovieapp",
+    "storage_bucket": "sandwitchmovieapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592504742101:android:719bdff648134c78ca025c",
+        "android_client_info": {
+          "package_name": "com.cronocode.moviecatalog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592504742101-t0gbl85090456i4mi1p9jlvu4kij6sii.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cronocode.moviecatalog",
+            "certificate_hash": "75831cd89b20655628ff6f84baa4855832cbb0a2"
+          }
+        },
+        {
+          "client_id": "592504742101-kias6f9ub1sk5vehigf5isul74usd4ah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA42CBfRUYGlVO4ba0OoGLaxxFvDv3AREk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592504742101-kias6f9ub1sk5vehigf5isul74usd4ah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

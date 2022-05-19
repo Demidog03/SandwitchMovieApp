@@ -1,17 +1,16 @@
-package com.cronocode.moviecatalog
+package com.cronocode.moviecatalog.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.models.Movie
 import com.cronocode.moviecatalog.models.MovieResponse
 import com.cronocode.moviecatalog.services.MovieApiInterface
 import com.cronocode.moviecatalog.services.MovieApiService
 import kotlinx.android.synthetic.main.activity_main.*
 
-import kotlinx.android.synthetic.main.movie_search.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
