@@ -3,6 +3,7 @@ package com.cronocode.moviecatalog.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.models.Movie
@@ -16,7 +17,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-
+    companion object {
+        val INTENT_PARCELABLE = "OBJECT_INTENT"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
 
         /**
@@ -24,44 +27,71 @@ class MainActivity : AppCompatActivity() {
          */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        ///////////
         rv_movies_list.layoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.HORIZONTAL, false)
         rv_movies_list.setHasFixedSize(true)
-        getMovieData { movies : List<Movie> ->
-            rv_movies_list.adapter = MovieAdapter(movies, false)
+        getMovieData("upcoming") { movies : List<Movie> ->
+            rv_movies_list.adapter = MovieAdapter(this, movies, "upcoming"){
+                val intent = Intent(this, Detail::class.java)
+                intent.putExtra(INTENT_PARCELABLE, it)
+                startActivity(intent)
+            }
         }
 
-        /////////////
+
+
+//        /////////////
 
         rv_movies_list2.layoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.HORIZONTAL, false)
         rv_movies_list2.setHasFixedSize(true)
-        getMovieData2 { movies : List<Movie> ->
-            rv_movies_list2.adapter = MovieAdapter(movies, false)
+        getMovieData("top_rated") { movies : List<Movie> ->
+            rv_movies_list2.adapter = MovieAdapter(this, movies, "horizontal"){
+                val intent = Intent(this, Detail::class.java)
+                intent.putExtra(INTENT_PARCELABLE, it)
+                startActivity(intent)
+            }
         }
 
+        ///////////
+
+        rv_movies_list3.layoutManager = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL, false)
+        rv_movies_list3.setHasFixedSize(true)
+        getMovieData("now_playing") { movies : List<Movie> ->
+            rv_movies_list3.adapter = MovieAdapter(this, movies, "horizontal"){
+                val intent = Intent(this, Detail::class.java)
+                intent.putExtra(INTENT_PARCELABLE, it)
+                startActivity(intent)
+            }
+        }
+
+        /**OnClickListeners */
         seeMorePopular.setOnClickListener{
-            val intent = Intent(this, movie_list_popular::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, movie_list_upcoming::class.java))
         }
         seeMoreTopRated.setOnClickListener{
-            val intent = Intent(this, movie_list_top_rated::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, movie_list_top_rated::class.java))
         }
-//        rv_movies_list_popular.layoutManager =  LinearLayoutManager(this)
-//        rv_movies_list_popular.setHasFixedSize(true)
-//        getMovieData { movies : List<Movie> ->
-//            rv_movies_list_popular.adapter = MovieAdapter(movies)
-//        }
+        seeMoreNowPlaying.setOnClickListener{
+            startActivity(Intent(this, movie_list_now_playing::class.java))
+        }
+        profileBtn.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, Profile::class.java))
+        })
+
 
 
     }
 
-    private fun getMovieData(callback: (List<Movie>) -> Unit){
+    private fun getMovieData( type: String, callback: (List<Movie>) -> Unit){
         val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
-        apiService.getMovieList().enqueue(object : Callback<MovieResponse> {
+        apiService.getMovieList("$type", "da0213edba5ce29d325c43cfec6aeab5").enqueue(object : Callback<MovieResponse> {
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
 
             }
@@ -72,19 +102,7 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
-    private fun getMovieData2(callback: (List<Movie>) -> Unit){
-        val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
-        apiService.getMovieList2().enqueue(object : Callback<MovieResponse> {
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
 
-            }
-
-            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                return callback(response.body()!!.movies)
-            }
-
-        })
-    }
 
 //    private fun setupSearchView(){
 //        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
@@ -98,5 +116,7 @@ class MainActivity : AppCompatActivity() {
 //
 //        })
 //    }
+
+
 
 }

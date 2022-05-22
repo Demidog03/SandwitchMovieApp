@@ -1,14 +1,13 @@
 package com.cronocode.moviecatalog.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.databinding.ActivityAuthorizationBinding
-import com.cronocode.moviecatalog.databinding.ActivityMainBinding
 import com.cronocode.moviecatalog.models.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -20,7 +19,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_authorization.*
 
 class Authorization : AppCompatActivity() {
@@ -86,7 +84,9 @@ class Authorization : AppCompatActivity() {
                         .child(user.uid)
                         .setValue(firebaseUser).addOnCompleteListener { task ->
                             if(task.isSuccessful) run{
-                                startActivity(Intent(this, MainActivity::class.java))
+                                val intent = Intent(this, MainActivity::class.java)
+                                intent.putExtra("profile", user.photoUrl)
+                                startActivity(intent)
                                 finishAffinity()
                             }
                             else{

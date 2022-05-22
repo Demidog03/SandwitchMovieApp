@@ -38,16 +38,25 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/movie_poster"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/movie_release_date"
+        app:layout_constraintTop_toBottomOf="@+id/movie_release_date"
+        app:srcCompat="@drawable/star_48px" />
+
     <TextView
         android:id="@+id/movie_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rating"
-       android:layout_marginTop="5dp"
-        android:textSize="13sp"
         android:textColor="@color/pale_black"
-        app:layout_constraintStart_toStartOf="@+id/movie_release_date"
-        app:layout_constraintTop_toBottomOf="@+id/movie_release_date" />
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/movie_release_date"

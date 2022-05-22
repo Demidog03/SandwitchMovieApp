@@ -1,5 +1,6 @@
 package com.cronocode.moviecatalog.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,24 +9,30 @@ import com.cronocode.moviecatalog.models.Movie
 import com.cronocode.moviecatalog.models.MovieResponse
 import com.cronocode.moviecatalog.services.MovieApiInterface
 import com.cronocode.moviecatalog.services.MovieApiService
-import kotlinx.android.synthetic.main.activity_movie_list_popular.*
+
+import kotlinx.android.synthetic.main.activity_movie_list_upcoming.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class movie_list_popular : AppCompatActivity() {
+class movie_list_now_playing : AppCompatActivity() {
+    val INTENT_PARCELABLE = "OBJECT_INTENT"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_list_popular)
+        setContentView(R.layout.activity_movie_list_now_playing)
         rv_movies_list_popular.layoutManager = LinearLayoutManager(this)
         rv_movies_list_popular.setHasFixedSize(true)
-        getMovieData { movies : List<Movie> ->
-            rv_movies_list_popular.adapter = MovieAdapter(movies, true)
+        getMovieData3 { movies : List<Movie> ->
+            rv_movies_list_popular.adapter = MovieAdapter(this, movies, "vertical"){
+                val intent = Intent(this, Detail::class.java)
+                intent.putExtra(INTENT_PARCELABLE, it)
+                startActivity(intent)
+            }
         }
     }
-    private fun getMovieData(callback: (List<Movie>) -> Unit){
+    private fun getMovieData3(callback: (List<Movie>) -> Unit){
         val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
-        apiService.getMovieList().enqueue(object : Callback<MovieResponse> {
+        apiService.getMovieList("now_playing", "bbf5a3000e95f1dddf266b5e187d4b21").enqueue(object : Callback<MovieResponse> {
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
 
             }
