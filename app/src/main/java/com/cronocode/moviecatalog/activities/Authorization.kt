@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_authorization.*
+import kotlinx.android.synthetic.main.activity_profile.*
 
 class Authorization : AppCompatActivity() {
     private lateinit var binding: ActivityAuthorizationBinding
@@ -51,12 +52,14 @@ class Authorization : AppCompatActivity() {
             //startActivity(Intent(this, MainActivity::class.java))
         })
 
-        binding.signUpBtn.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, registration::class.java))
-        })
-        binding.loginBtn.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, login::class.java))
-        })
+
+
+//        binding.signUpBtn.setOnClickListener(View.OnClickListener {
+//            startActivity(Intent(this, registration::class.java))
+//        })
+//        binding.loginBtn.setOnClickListener(View.OnClickListener {
+//            startActivity(Intent(this, login::class.java))
+//        })
 
     }
 

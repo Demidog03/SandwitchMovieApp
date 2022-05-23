@@ -89,7 +89,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center_vertical"
                 android:text="Top Rated"
@@ -165,6 +165,42 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Popular"
+                android:textColor="@color/pale_black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toBottomOf="@+id/rv_movies_list3" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_movies_list4"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="8dp"
+
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:reverseLayout="true" />
+
+            <TextView
+                android:id="@+id/seeMorePopular1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+
+                android:layout_marginEnd="16dp"
+                android:text="See more"
+                android:textColor="@color/pale_black"
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <!--            <ImageView-->
             <!--                android:layout_width="wrap_content"-->

@@ -1,38 +1,57 @@
 package com.cronocode.moviecatalog.activities
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.models.Movie
 import com.cronocode.moviecatalog.models.MovieResponse
 import com.cronocode.moviecatalog.services.MovieApiInterface
 import com.cronocode.moviecatalog.services.MovieApiService
 import kotlinx.android.synthetic.main.activity_movie_list.*
+import kotlinx.android.synthetic.main.movie_search.*
+import kotlinx.android.synthetic.main.movie_search.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class movie_list_now_playing : AppCompatActivity() {
-
+class movie_search_activity: AppCompatActivity() {
+    lateinit var movieAdapter: MovieAdapter
+    lateinit var movies: List<Movie>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_list)
-        genreTitle.text = "Now Playing"
-        rv_movies_list_popular.layoutManager = LinearLayoutManager(this)
-        rv_movies_list_popular.setHasFixedSize(true)
-        getMovieData { movies : List<Movie> ->
-            rv_movies_list_popular.adapter = MovieAdapter(movies, "vertical"){
-                val intent = Intent(this, Detail::class.java)
-                intent.putExtra(MainActivity.INTENT_PARCELABLE, it)
-                startActivity(intent)
+        setContentView(R.layout.movie_search)
+        searchList.layoutManager = LinearLayoutManager(this)
+        searchList.setHasFixedSize(true)
+        val intent = Intent(this, Detail::class.java)
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                getMovieDataBySearch("$p0"){movies:List<Movie> ->
+                    searchList.adapter = MovieAdapter( movies, "vertical"){
+                        intent.putExtra(MainActivity.INTENT_PARCELABLE, it)
+                        startActivity(intent)
+                    }
+                }
+                return false
             }
-        }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                getMovieDataBySearch("$p0"){movies:List<Movie> ->
+                    searchList.adapter = MovieAdapter( movies, "vertical"){
+                        intent.putExtra(MainActivity.INTENT_PARCELABLE, it)
+                        startActivity(intent)
+                    }
+                }
+                return true
+            }
+
+        })
         //Button and OnClickers
         val homeBtn = findViewById<ImageView>(R.id.homeBtn)
         val searchBtn = findViewById<ImageView>(R.id.searchBtn)
@@ -46,10 +65,14 @@ class movie_list_now_playing : AppCompatActivity() {
         profileBtn.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, Profile::class.java))
         })
+
     }
-    private fun getMovieData(callback: (List<Movie>) -> Unit){
+
+
+    private fun getMovieDataBySearch(query: String?, callback: (List<Movie>) -> Unit){
         val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
-        apiService.getMovieList("now_playing", "bbf5a3000e95f1dddf266b5e187d4b21").enqueue(object : Callback<MovieResponse> {
+        apiService.searchMovieApi("$query", "da0213edba5ce29d325c43cfec6aeab5").enqueue(object :
+            Callback<MovieResponse> {
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
 
             }

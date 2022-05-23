@@ -11,7 +11,6 @@ import com.cronocode.moviecatalog.models.Movie
 import kotlinx.android.synthetic.main.movie_item.view.*
 
 class MovieAdapter(
-    private val context: Context,
     private val movies : List<Movie>,
     private val type : String,
     val listener: (Movie) -> Unit

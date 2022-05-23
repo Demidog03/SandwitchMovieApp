@@ -1,12 +1,10 @@
 package com.cronocode.moviecatalog.activities
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.models.Movie
@@ -18,12 +16,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class movie_list_now_playing : AppCompatActivity() {
-
+class movie_list_popular: AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_list)
-        genreTitle.text = "Now Playing"
+        genreTitle.text = "Popular"
         rv_movies_list_popular.layoutManager = LinearLayoutManager(this)
         rv_movies_list_popular.setHasFixedSize(true)
         getMovieData { movies : List<Movie> ->
@@ -49,7 +46,8 @@ class movie_list_now_playing : AppCompatActivity() {
     }
     private fun getMovieData(callback: (List<Movie>) -> Unit){
         val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
-        apiService.getMovieList("now_playing", "bbf5a3000e95f1dddf266b5e187d4b21").enqueue(object : Callback<MovieResponse> {
+        apiService.getMovieList("popular", "bbf5a3000e95f1dddf266b5e187d4b21").enqueue(object :
+            Callback<MovieResponse> {
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
 
             }

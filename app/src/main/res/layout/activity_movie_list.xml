@@ -35,7 +35,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/genreTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -70,16 +70,16 @@
         app:layout_constraintGuide_percent="0.9"/>
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/homeBtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-        app:layout_constraintEnd_toStartOf="@+id/imageView10"
+        app:layout_constraintBottom_toBottomOf="@+id/searchBtn"
+        app:layout_constraintEnd_toStartOf="@+id/searchBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/home_48px" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/searchBtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginBottom="12dp"
@@ -89,11 +89,11 @@
         app:srcCompat="@drawable/search_48px" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/profileBtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+        app:layout_constraintBottom_toBottomOf="@+id/searchBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/searchBtn"
         app:srcCompat="@drawable/person_48px" />
 </androidx.constraintlayout.widget.ConstraintLayout>

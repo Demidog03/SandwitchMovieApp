@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL, false)
         rv_movies_list.setHasFixedSize(true)
         getMovieData("upcoming") { movies : List<Movie> ->
-            rv_movies_list.adapter = MovieAdapter(this, movies, "upcoming"){
+            rv_movies_list.adapter = MovieAdapter(movies, "upcoming"){
                 val intent = Intent(this, Detail::class.java)
                 intent.putExtra(INTENT_PARCELABLE, it)
                 startActivity(intent)
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL, false)
         rv_movies_list2.setHasFixedSize(true)
         getMovieData("top_rated") { movies : List<Movie> ->
-            rv_movies_list2.adapter = MovieAdapter(this, movies, "horizontal"){
+            rv_movies_list2.adapter = MovieAdapter(movies, "horizontal"){
                 val intent = Intent(this, Detail::class.java)
                 intent.putExtra(INTENT_PARCELABLE, it)
                 startActivity(intent)
@@ -64,7 +64,18 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL, false)
         rv_movies_list3.setHasFixedSize(true)
         getMovieData("now_playing") { movies : List<Movie> ->
-            rv_movies_list3.adapter = MovieAdapter(this, movies, "horizontal"){
+            rv_movies_list3.adapter = MovieAdapter( movies, "horizontal"){
+                val intent = Intent(this, Detail::class.java)
+                intent.putExtra(INTENT_PARCELABLE, it)
+                startActivity(intent)
+            }
+        }
+        rv_movies_list4.layoutManager = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL, false)
+        rv_movies_list4.setHasFixedSize(true)
+        getMovieData("popular") { movies : List<Movie> ->
+            rv_movies_list4.adapter = MovieAdapter( movies, "horizontal"){
                 val intent = Intent(this, Detail::class.java)
                 intent.putExtra(INTENT_PARCELABLE, it)
                 startActivity(intent)
@@ -81,10 +92,18 @@ class MainActivity : AppCompatActivity() {
         seeMoreNowPlaying.setOnClickListener{
             startActivity(Intent(this, movie_list_now_playing::class.java))
         }
+        seeMorePopular1.setOnClickListener{
+            startActivity(Intent(this, movie_list_popular::class.java))
+        }
         profileBtn.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, Profile::class.java))
         })
-
+        searchBtn.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, movie_search_activity::class.java))
+        })
+        homeBtn.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        })
 
 
     }
@@ -102,6 +121,7 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
+
 
 
 //    private fun setupSearchView(){

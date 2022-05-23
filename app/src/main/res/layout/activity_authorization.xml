@@ -15,57 +15,71 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
-            android:id="@+id/imageView"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Welcome to Sandwitch Movie App!"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        <Button
-            android:id="@+id/loginBtn"
+
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:padding="15dp"
-            android:text="Login"
-            android:textSize="12sp"
-            app:backgroundTint="#333"
+            android:layout_height="160dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.51" />
+            app:layout_constraintVertical_bias="0.43"
+            app:srcCompat="@drawable/logo" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:layout_marginTop="16dp"
-            android:text="Don't have an account?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/loginBtn"
-            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
-        <TextView
-            android:id="@+id/signUpBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Sign Up?"
-            app:layout_constraintEnd_toEndOf="@+id/textView4"
-            app:layout_constraintStart_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+<!--        <Button-->
+<!--            android:id="@+id/loginBtn"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/roboto_bold"-->
+<!--            android:padding="15dp"-->
+<!--            android:text="Login"-->
+<!--            android:textSize="12sp"-->
+<!--            app:backgroundTint="#333"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.51" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView4"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="19dp"-->
+<!--            android:text="Don't have an account?"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/loginBtn" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/signUpBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:fontFamily="@font/roboto_bold"-->
+<!--            android:text="Sign Up?"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/textView4"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/textView4"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
 
         <LinearLayout
             android:id="@+id/googleBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/black_rounded_bg"
             android:gravity="center"
             android:orientation="horizontal"
@@ -73,9 +87,9 @@
             android:paddingTop="5dp"
             android:paddingRight="15dp"
             android:paddingBottom="5dp"
-            app:layout_constraintEnd_toEndOf="@+id/signUpBtn"
-            app:layout_constraintStart_toStartOf="@+id/signUpBtn"
-            app:layout_constraintTop_toBottomOf="@+id/signUpBtn">
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -95,6 +109,19 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.04000002"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/spirited_away" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -109,4 +136,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.93" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
