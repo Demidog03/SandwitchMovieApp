@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.110000014" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/textView8"
@@ -67,7 +67,7 @@
         tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress2"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -78,23 +78,22 @@
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:textColorHint="@color/lightGray" />
+            android:textColorHint="@color/lightGray"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
 
-        android:id="@+id/textView15"
+        android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Password"
         android:textColor="@color/gray"
         android:textSize="23sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
@@ -102,12 +101,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
         app:passwordToggleEnabled="true"
         tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress3"
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -122,10 +121,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/black_rounded_bg"
         android:fontFamily="@font/roboto_bold"
         android:paddingTop="10dp"
@@ -138,20 +137,22 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:gravity="center_vertical"
+        android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/button2">
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn">
 
         <TextView
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0"
             android:fontFamily="@font/roboto"
             android:gravity="center_vertical"
             android:text="Don't have and account?"
@@ -161,7 +162,7 @@
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center_vertical"
             android:text="Sign Up"
@@ -169,3 +170,43 @@
             android:textSize="16sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--    lateinit var authService: AuthService-->
+<!--    internal var compositeDisposable = CompositeDisposable()-->
+<!--    override fun onStop() {-->
+<!--    compositeDisposable.clear()-->
+<!--    super.onStop()-->
+<!--    }-->
+<!--    override fun onCreate(savedInstanceState: Bundle?) {-->
+<!--    super.onCreate(savedInstanceState)-->
+<!--    setContentView(R.layout.activity_authorization)-->
+
+<!--    //Init Api-->
+<!--    val retrofit = RetrofitClient.getInstance()-->
+<!--    authService = retrofit.create(AuthService::class.java)-->
+
+<!--    //Event-->
+<!--    btn_login.setOnClickListener{-->
+<!--    val email = findViewById<TextView>(R.id.edt_email) as MaterialEditText-->
+<!--val password = findViewById<TextView>(R.id.edt_password) as MaterialEditText-->
+<!--    val requestBody: MutableMap<String, String> = HashMap()-->
+<!--    requestBody["email"] = email.text.toString()-->
+<!--    requestBody["password"] = password.text.toString()-->
+<!--    val call: Call<Any?>? = authService.loginUser(requestBody)-->
+<!--    call?.enqueue(object : Callback<Any?> {-->
+<!--    override fun onResponse(call: Call<Any?>?, response: Response<Any?>) {-->
+<!--    try {-->
+<!--    val `object` = JSONObject(Gson().toJson(response.body()))-->
+<!--    Log.e("TAG", "onResponse: $`object`")-->
+<!--    } catch (e: JSONException) {-->
+<!--    e.printStackTrace()-->
+<!--    }-->
+<!--    }-->
+
+<!--    override fun onFailure(call: Call<Any?>?, t: Throwable?) {}-->
+<!--    })-->
+
+<!--    }-->
+
+

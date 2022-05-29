@@ -92,11 +92,24 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_video_link"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
         app:layout_constraintEnd_toEndOf="@+id/movie_desc"
         app:layout_constraintStart_toStartOf="@+id/movie_desc"
         app:layout_constraintTop_toBottomOf="@+id/movie_desc"
         android:visibility="invisible"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_companies"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/guideline12"
+        app:layout_constraintTop_toBottomOf="@+id/movie_video_link">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <ImageView
         android:id="@+id/homeBtn"
         android:layout_width="30dp"
@@ -179,5 +192,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.32"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_genres"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:foregroundGravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/movie_rating"></androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

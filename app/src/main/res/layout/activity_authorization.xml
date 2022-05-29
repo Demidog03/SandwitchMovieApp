@@ -64,16 +64,32 @@
 <!--            app:layout_constraintEnd_toEndOf="parent"-->
 <!--            app:layout_constraintStart_toStartOf="@+id/loginBtn" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/signUpBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:fontFamily="@font/roboto_bold"-->
-<!--            android:text="Sign Up?"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/textView4"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/textView4"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
+        <TextView
+            android:id="@+id/signUpBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Sign Up?"
+            app:layout_constraintEnd_toEndOf="@+id/loginBtn"
+            app:layout_constraintStart_toStartOf="@+id/loginBtn"
+            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/black_rounded_bg"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/googleBtn"
+            app:layout_constraintStart_toStartOf="@+id/googleBtn"
+            app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
 
         <LinearLayout
             android:id="@+id/googleBtn"

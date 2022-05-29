@@ -5,12 +5,18 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Genre (
+data class Company(
     @SerializedName("id")
     val id : String ?,
 
     @SerializedName("name")
     val name : String?,
+
+    @SerializedName("logo_path")
+    val logo : String?,
+
+    @SerializedName("origin_country")
+    val country : String?
 ): Parcelable {
-    constructor():this("", "")
+    constructor() : this("", "", "", "")
 }

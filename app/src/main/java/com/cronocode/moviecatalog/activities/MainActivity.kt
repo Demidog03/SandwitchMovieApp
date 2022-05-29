@@ -1,9 +1,9 @@
 package com.cronocode.moviecatalog.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.models.Movie
@@ -11,10 +11,10 @@ import com.cronocode.moviecatalog.models.MovieResponse
 import com.cronocode.moviecatalog.services.MovieApiInterface
 import com.cronocode.moviecatalog.services.MovieApiService
 import kotlinx.android.synthetic.main.activity_main.*
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -82,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
         /**OnClickListeners */
         seeMorePopular.setOnClickListener{
             startActivity(Intent(this, movie_list_upcoming::class.java))
@@ -96,7 +97,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, movie_list_popular::class.java))
         }
         profileBtn.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, Profile::class.java))
+            val newIntent = Intent(this, Profile::class.java)
+            startActivity(newIntent)
         })
         searchBtn.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, movie_search_activity::class.java))
@@ -104,7 +106,9 @@ class MainActivity : AppCompatActivity() {
         homeBtn.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         })
-
+        btnGoToGenres.setOnClickListener{
+            startActivity(Intent(this, Genres::class.java))
+        }
 
     }
 

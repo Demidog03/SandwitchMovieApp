@@ -26,9 +26,12 @@ data class Movie(
 
     @SerializedName("backdrop_path")
     val backdropUrl : String?,
-    @SerializedName("genre_ids")
-    val genreIds : List<String>
+    @SerializedName("genres")
+    val genres : List<Genre>,
+
+    @SerializedName("production_companies")
+    val companies: List<Company>
 
 ) : Parcelable{
-    constructor() : this("", "", "", "", "", "", "", mutableListOf())
+    constructor() : this("", "", "", "", "", "", "", mutableListOf(), mutableListOf())
 }

@@ -1,14 +1,12 @@
 package com.cronocode.moviecatalog.activities
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.cronocode.moviecatalog.R
@@ -16,9 +14,7 @@ import com.cronocode.moviecatalog.models.*
 import com.cronocode.moviecatalog.services.MovieApiInterface
 import com.cronocode.moviecatalog.services.MovieApiService
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.movie_video_links.*
-import kotlinx.android.synthetic.main.movie_video_links.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,6 +43,7 @@ class Detail : AppCompatActivity() {
         movieDesc.text = movie.overview
         movieRating.text = movie.rating
         movieDate.text = movie.release
+//        Trailers
         movie_video_link.layoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.HORIZONTAL, false)
@@ -54,6 +51,22 @@ class Detail : AppCompatActivity() {
         getMovieVideo("${movie.id}") { movieVideos : List<MovieVideosResults> ->
             movie_video_link.adapter = MovieTrailerAdapter(this, movieVideos)
         }
+
+//        Company
+        movie_companies.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        movie_companies.setHasFixedSize(true)
+        getCompanyByMovieId("${movie.id}"){ companies: List<Company>->
+            movie_companies.adapter = CompanyAdapter( companies)
+        }
+
+//        Genre
+        movie_genres.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        movie_genres.setHasFixedSize(true)
+        getGenreByMovieId("${movie.id}"){ genres: List<Genre>->
+            movie_genres.adapter = GenreAdapter( genres)
+        }
+
+
 //        getGenres { genres : List<Genre> ->
 //            movieGen.adapter = MovieTrailerAdapter(this, movieVideos)
 //        }
@@ -111,6 +124,33 @@ class Detail : AppCompatActivity() {
 
         })
     }
+    private fun getCompanyByMovieId(movieId: String, callback: (List<Company>) -> Unit){
+        val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
+        apiService.getCompanyOrGenreByMovieId("$movieId", "da0213edba5ce29d325c43cfec6aeab5").enqueue(object : Callback<Movie> {
+            override fun onFailure(call: Call<Movie>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                return callback(response.body()!!.companies)
+            }
+
+        })
+    }
+    private fun getGenreByMovieId(movieId: String, callback: (List<Genre>) -> Unit){
+        val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
+        apiService.getCompanyOrGenreByMovieId("$movieId", "da0213edba5ce29d325c43cfec6aeab5").enqueue(object : Callback<Movie> {
+            override fun onFailure(call: Call<Movie>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                return callback(response.body()!!.genres)
+            }
+
+        })
+    }
+
 //    private fun getGenres(callback: (List<String>) -> Unit){
 //        val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
 //        apiService.getGenres( "da0213edba5ce29d325c43cfec6aeab5").enqueue(object : Callback<Movie> {

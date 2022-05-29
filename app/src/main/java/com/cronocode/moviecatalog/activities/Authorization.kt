@@ -1,6 +1,8 @@
 package com.cronocode.moviecatalog.activities
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,10 +21,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_authorization.*
-import kotlinx.android.synthetic.main.activity_profile.*
+
 
 class Authorization : AppCompatActivity() {
+    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var binding: ActivityAuthorizationBinding
 
     private lateinit var mGoogleSignInClient: GoogleSignInClient
@@ -44,6 +46,11 @@ class Authorization : AppCompatActivity() {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
+        //delete previous auth
+        sharedPreferences = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
 
         /**onClickListeners*/
         binding.googleBtn.setOnClickListener(View.OnClickListener {
@@ -54,12 +61,12 @@ class Authorization : AppCompatActivity() {
 
 
 
-//        binding.signUpBtn.setOnClickListener(View.OnClickListener {
-//            startActivity(Intent(this, registration::class.java))
-//        })
-//        binding.loginBtn.setOnClickListener(View.OnClickListener {
-//            startActivity(Intent(this, login::class.java))
-//        })
+        binding.signUpBtn.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, registration::class.java))
+        })
+        binding.loginBtn.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, login::class.java))
+        })
 
     }
 

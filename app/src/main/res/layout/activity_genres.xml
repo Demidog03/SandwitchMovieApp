@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.MainActivity" >
+    tools:context=".activities.Genres" >
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
@@ -52,10 +52,11 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center_vertical"
-                android:text="Upcoming"
+                android:text="Action"
                 android:textColor="@color/pale_black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -75,12 +76,13 @@
                 app:layout_constraintTop_toTopOf="@+id/textView3" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_movies_list"
+                android:id="@+id/rv_genre_action"
                 android:layout_width="0dp"
                 android:layout_height="230dp"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
                 app:reverseLayout="true" />
@@ -89,14 +91,15 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center_vertical"
-                android:text="Top Rated"
+                android:text="Animation"
                 android:textColor="@color/pale_black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
-                app:layout_constraintTop_toBottomOf="@+id/rv_movies_list" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_genre_adventure" />
 
             <TextView
                 android:id="@+id/seeMorePopular"
@@ -108,31 +111,32 @@
                 android:text="See more"
                 android:textColor="@color/pale_black"
                 app:layout_constraintBottom_toBottomOf="@+id/textView2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView2" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_movies_list2"
+                android:id="@+id/rv_genre_adventure"
                 android:layout_width="0dp"
                 android:layout_height="270dp"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
                 app:reverseLayout="true" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Now Playing"
+                android:text="Comedy"
                 android:textColor="@color/pale_black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
-                app:layout_constraintTop_toBottomOf="@+id/rv_movies_list2" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_genre_animation" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline5"
@@ -142,15 +146,15 @@
                 app:layout_constraintGuide_percent="0.07"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_movies_list3"
+                android:id="@+id/rv_genre_animation"
                 android:layout_width="0dp"
                 android:layout_height="250dp"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
                 app:reverseLayout="true" />
 
             <TextView
@@ -170,25 +174,14 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Popular"
+                android:text="Adventure"
                 android:textColor="@color/pale_black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
-                app:layout_constraintTop_toBottomOf="@+id/rv_movies_list3" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_movies_list4"
-                android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:layout_marginTop="8dp"
-
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
-                app:reverseLayout="true" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_genre_action" />
 
             <TextView
                 android:id="@+id/seeMorePopular1"
@@ -202,48 +195,128 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView6"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-            <Button
-                android:id="@+id/btnGoToGenres"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_genre_comedy"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:reverseLayout="true" />
+            <TextView
+                android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="Check movies by genres"
-                app:layout_constraintTop_toBottomOf="@+id/rv_movies_list4"
-                tools:layout_editor_absoluteX="91dp" />
+                android:fontFamily="@font/roboto_bold"
+                android:text="Crime"
+                android:textColor="@color/pale_black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toBottomOf="@+id/rv_genre_comedy" />
 
-            <!--            <ImageView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:gravity="center"-->
-            <!--                android:src="@drawable/home_icon"-->
-            <!--                app:layout_heightPercent="50%"-->
-            <!--                app:layout_marginEndPercent="0%"-->
-            <!--                app:layout_marginStartPercent="10%"-->
-            <!--                app:layout_marginTopPercent="25%"-->
-            <!--                app:layout_widthPercent="5%" />-->
+            <TextView
+                android:id="@+id/seeMorePopular2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
 
+                android:layout_marginEnd="16dp"
+                android:text="See more"
+                android:textColor="@color/pale_black"
+                app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-            <!--            <ImageView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:gravity="center"-->
-            <!--                android:src="@drawable/img_6"-->
-            <!--                app:layout_heightPercent="60%"-->
-            <!--                app:layout_marginEndPercent="0%"-->
-            <!--                app:layout_marginStartPercent="50%"-->
-            <!--                app:layout_marginTopPercent="20%"-->
-            <!--                app:layout_widthPercent="7%" />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_genre_crime"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                app:reverseLayout="true" />
 
-            <!--            <ImageView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:gravity="center"-->
-            <!--                android:src="@drawable/img_7"-->
-            <!--                app:layout_heightPercent="60%"-->
-            <!--                app:layout_marginEndPercent="0%"-->
-            <!--                app:layout_marginStartPercent="80%"-->
-            <!--                app:layout_marginTopPercent="20%"-->
-            <!--                app:layout_widthPercent="7%" />-->
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Documentary"
+                android:textColor="@color/pale_black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toBottomOf="@+id/rv_genre_crime" />
+
+            <TextView
+                android:id="@+id/seeMoreDocumentary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+
+                android:layout_marginEnd="16dp"
+                android:text="See more"
+                android:textColor="@color/pale_black"
+                app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_genre_documentary"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:reverseLayout="true" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Drama"
+                android:textColor="@color/pale_black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toBottomOf="@+id/rv_genre_documentary" />
+
+            <TextView
+                android:id="@+id/seeMoreDrama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+
+                android:layout_marginEnd="16dp"
+                android:text="See more"
+                android:textColor="@color/pale_black"
+                app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_genre_drama"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:reverseLayout="true" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
