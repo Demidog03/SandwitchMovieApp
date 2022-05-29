@@ -88,16 +88,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movie_video_link"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        app:layout_constraintEnd_toEndOf="@+id/movie_desc"
-        app:layout_constraintStart_toStartOf="@+id/movie_desc"
-        app:layout_constraintTop_toBottomOf="@+id/movie_desc"
-        android:visibility="invisible"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_companies"
         android:layout_width="0dp"
@@ -109,6 +99,19 @@
         app:layout_constraintTop_toBottomOf="@+id/movie_video_link">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_video_link"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="@+id/movie_desc"
+        app:layout_constraintStart_toStartOf="@+id/movie_desc"
+        app:layout_constraintTop_toBottomOf="@+id/movie_desc"
+        android:visibility="invisible"/>
+
+
 
     <ImageView
         android:id="@+id/homeBtn"
@@ -202,5 +205,14 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/movie_rating"></androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/btnFavourites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mainPicture"
+        app:layout_constraintStart_toStartOf="@+id/guideline12"
+        app:srcCompat="@drawable/favorite_48px" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

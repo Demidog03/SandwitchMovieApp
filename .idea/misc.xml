@@ -8,6 +8,7 @@
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/black_rounded_bg.xml" value="0.2735" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/border_bottom.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/chevron_right_48px.xml" value="0.1575" />
+        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/favorite_48px.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/home-48px.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/home_48px.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1575" />
@@ -19,7 +20,7 @@
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/star_48px.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/white_rounded_bg.xml" value="0.1085" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_authorization.xml" value="0.2754782700075322" />
-        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_detail.xml" value="0.4173913181932306" />
+        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_detail.xml" value="0.16695652727729227" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_detail_adapter.xml" value="0.12239583333333333" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_genres.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_login.xml" value="0.2754782700075322" />

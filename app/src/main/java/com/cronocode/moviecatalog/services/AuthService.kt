@@ -18,7 +18,8 @@ interface AuthService {
     fun loginUser(@Body body: Map<String, String>): Call<Any?>?
     @POST("getUserById")
     fun getUserById(@Body body: Map<String, String>): Call<Any?>?
-
+    @POST("addToFavoriteMovies")
+    fun addToFavoriteMovies(@Body body: Map<String, String>): Call<Any?>?
 //    @POST("login")
 //    @FormUrlEncoded
 //    fun loginUser(

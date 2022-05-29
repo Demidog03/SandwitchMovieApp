@@ -1,32 +1,46 @@
 package com.cronocode.moviecatalog.activities
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.models.*
+import com.cronocode.moviecatalog.services.AuthService
 import com.cronocode.moviecatalog.services.MovieApiInterface
 import com.cronocode.moviecatalog.services.MovieApiService
+import com.cronocode.moviecatalog.services.RetrofitClient
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.movie_video_links.*
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class Detail : AppCompatActivity() {
     private val IMAGE_BASE = "https://image.tmdb.org/t/p/w500/"
+    private lateinit var  authService: AuthService
+    private var `object` = JSONObject()
     private lateinit var retrofitService: MovieApiInterface
-
+    private lateinit var pref: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         val intent: Intent = intent
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+        val retrofit = RetrofitClient.getInstance()
+        authService = retrofit.create(AuthService::class.java)
 
         val movie = intent.getParcelableExtra<Movie>(MainActivity.INTENT_PARCELABLE)
 
@@ -76,6 +90,10 @@ class Detail : AppCompatActivity() {
             i.setData(Uri.parse(url))
             startActivity(i)
         })
+        //Sharedpref init
+        pref = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
+        val jsonTokenString = pref.getString("jsonTokenString", "")
+
 
         //Button and OnClickers
         val homeBtn = findViewById<ImageView>(R.id.homeBtn)
@@ -90,6 +108,34 @@ class Detail : AppCompatActivity() {
         profileBtn.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, Profile::class.java))
         })
+        btnFavourites.setOnClickListener{
+            if(jsonTokenString!=""){
+                val userId: String
+                val mJSONUser = JSONObject(jsonTokenString)
+                userId = mJSONUser.get("userId").toString()
+                val requestBody: MutableMap<String, String> = HashMap()
+                requestBody["userId"] = userId
+                requestBody["movieId"] = movie.id.toString()
+                val call: Call<Any?>? = authService.addToFavoriteMovies(requestBody)
+                call?.enqueue(object : Callback<Any?> {
+
+                    override fun onResponse(call: Call<Any?>?, response: Response<Any?>) {
+                        try {
+                            `object` = JSONObject(Gson().toJson(response.body()))
+                            Log.e("TAG", "onResponse: $`object`")
+
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+                        }
+                        if(response.isSuccessful){
+                            Toast.makeText(applicationContext, "Movie added to your favourites!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Any?>?, t: Throwable?) {}
+                })
+            }
+        }
 
 //        val movieVideoCall: Call<MovieVideos> = retrofitService.getMovieVideosById(movie.id!!, "da0213edba5ce29d325c43cfec6aeab5")
 //        movieVideoCall.enqueue(object: Callback<MovieVideos>{
