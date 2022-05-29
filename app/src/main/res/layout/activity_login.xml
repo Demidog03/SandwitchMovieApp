@@ -113,7 +113,7 @@
             android:background="@drawable/white_rounded_bg"
             android:ems="10"
             android:hint="Enter your password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
@@ -159,7 +159,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/signUpBtn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"

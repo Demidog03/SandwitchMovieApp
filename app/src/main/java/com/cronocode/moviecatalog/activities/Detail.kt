@@ -32,6 +32,7 @@ class Detail : AppCompatActivity() {
     private val IMAGE_BASE = "https://image.tmdb.org/t/p/w500/"
     private lateinit var  authService: AuthService
     private var `object` = JSONObject()
+    private var isFavourite = false
     private lateinit var retrofitService: MovieApiInterface
     private lateinit var pref: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,6 +95,43 @@ class Detail : AppCompatActivity() {
         pref = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
         val jsonTokenString = pref.getString("jsonTokenString", "")
 
+        //change heart icon
+        if(jsonTokenString!=""){
+            val userId: String
+            val mJSONUser = JSONObject(jsonTokenString)
+            userId = mJSONUser.get("userId").toString()
+            val requestBody: MutableMap<String, String> = HashMap()
+            requestBody["userId"] = userId
+
+            val call1: Call<Any?>? = authService.isFavoriteMovie(userId, movie.id.toString())
+            call1?.enqueue(object : Callback<Any?> {
+
+                override fun onResponse(call: Call<Any?>?, response: Response<Any?>) {
+                    try {
+                        isFavourite = response.body() as Boolean
+                        Log.e("TAG", "onResponse: $isFavourite")
+
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                    if(response.isSuccessful){
+                        println(isFavourite)
+                        if(isFavourite==false){
+                            btnFavouritesSrc.setImageResource(R.drawable.favorite_48px)
+                            favTextView.text = "Add to Favourites"
+                        }
+                        else{
+                            btnFavouritesSrc.setImageResource(R.drawable.heart_broken_48px)
+                            favTextView.text = "Remove from Favourites"
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<Any?>?, t: Throwable?) {}
+            })
+
+        }
+
 
         //Button and OnClickers
         val homeBtn = findViewById<ImageView>(R.id.homeBtn)
@@ -116,24 +154,72 @@ class Detail : AppCompatActivity() {
                 val requestBody: MutableMap<String, String> = HashMap()
                 requestBody["userId"] = userId
                 requestBody["movieId"] = movie.id.toString()
-                val call: Call<Any?>? = authService.addToFavoriteMovies(requestBody)
-                call?.enqueue(object : Callback<Any?> {
+                val call1: Call<Any?>? = authService.isFavoriteMovie(userId, movie.id.toString())
+                call1?.enqueue(object : Callback<Any?> {
 
                     override fun onResponse(call: Call<Any?>?, response: Response<Any?>) {
                         try {
-                            `object` = JSONObject(Gson().toJson(response.body()))
-                            Log.e("TAG", "onResponse: $`object`")
+                            isFavourite = response.body() as Boolean
+                            Log.e("TAG", "onResponse: $isFavourite")
 
                         } catch (e: JSONException) {
                             e.printStackTrace()
                         }
                         if(response.isSuccessful){
-                            Toast.makeText(applicationContext, "Movie added to your favourites!", Toast.LENGTH_SHORT).show()
+                            println(isFavourite)
+                            if(isFavourite==false){
+                                val call: Call<Any?>? = authService.addToFavoriteMovies(requestBody)
+                                call?.enqueue(object : Callback<Any?> {
+
+                                    override fun onResponse(call: Call<Any?>?, response: Response<Any?>) {
+                                        try {
+                                            `object` = JSONObject(Gson().toJson(response.body()))
+                                            Log.e("TAG", "onResponse: $`object`")
+
+                                        } catch (e: JSONException) {
+                                            e.printStackTrace()
+                                        }
+                                        if(response.isSuccessful){
+                                            Toast.makeText(applicationContext, "Movie added to your favourites!", Toast.LENGTH_SHORT).show()
+                                            btnFavouritesSrc.setImageResource(R.drawable.heart_broken_48px)
+                                            favTextView.text = "Remove from Favourites"
+                                        }
+                                    }
+
+                                    override fun onFailure(call: Call<Any?>?, t: Throwable?) {}
+                                })
+                            }
+                            else{
+                                btnFavouritesSrc.setImageResource(R.drawable.heart_broken_48px)
+                                favTextView.text = "Remove from Favourites"
+                                val call: Call<Any?>? = authService.removeFromFavoriteMovies(requestBody)
+                                call?.enqueue(object : Callback<Any?> {
+
+                                    override fun onResponse(call: Call<Any?>?, response: Response<Any?>) {
+                                        try {
+                                            `object` = JSONObject(Gson().toJson(response.body()))
+                                            Log.e("TAG", "onResponse: $`object`")
+
+                                        } catch (e: JSONException) {
+                                            e.printStackTrace()
+                                        }
+                                        if(response.isSuccessful){
+                                            Toast.makeText(applicationContext, "Movie removed from your favourites", Toast.LENGTH_SHORT).show()
+                                            btnFavouritesSrc.setImageResource(R.drawable.favorite_48px)
+                                            favTextView.text = "Add to Favourites"
+                                        }
+                                    }
+
+                                    override fun onFailure(call: Call<Any?>?, t: Throwable?) {}
+                                })
+
+                            }
                         }
                     }
 
                     override fun onFailure(call: Call<Any?>?, t: Throwable?) {}
                 })
+
             }
         }
 

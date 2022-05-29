@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/border_bottom.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/chevron_right_48px.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/favorite_48px.xml" value="0.1575" />
+        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/heart_broken_48px.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/home-48px.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/home_48px.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1575" />
@@ -20,17 +21,17 @@
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/star_48px.xml" value="0.1575" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/drawable/white_rounded_bg.xml" value="0.1085" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_authorization.xml" value="0.2754782700075322" />
-        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_detail.xml" value="0.16695652727729227" />
+        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_detail.xml" value="0.2754782700075322" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_detail_adapter.xml" value="0.12239583333333333" />
-        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_genres.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_genres.xml" value="0.2838283828382838" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_login.xml" value="0.2754782700075322" />
-        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_main.xml" value="0.2086956590966153" />
+        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_main.xml" value="0.2754782700075322" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_movie_list.xml" value="0.2086956590966153" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_movie_list_now_playing.xml" value="0.1" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_movie_list_popular.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_movie_list_top_rated.xml" value="0.1" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_movie_list_upcoming.xml" value="0.1" />
-        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_profile.xml" value="0.2086956590966153" />
+        <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_profile.xml" value="0.2754782700075322" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_registration.xml" value="0.2754782700075322" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/activity_video_play.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/Acer/Desktop/MovieCatalogApp-master/app/src/main/res/layout/company_item.xml" value="0.626086977289846" />

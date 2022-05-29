@@ -69,38 +69,53 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Description"
         android:textColor="#673AB7"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toBottomOf="@+id/mainPicture" />
+        app:layout_constraintTop_toBottomOf="@+id/btnFavourites" />
 
-    <TextView
-        android:id="@+id/movie_desc"
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:text="Desc"
-        android:textSize="16sp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/searchBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movie_companies"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline13"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toBottomOf="@+id/movie_video_link">
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/movie_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Desc"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/linearLayout3"
+                app:layout_constraintStart_toStartOf="@id/linearLayout3"
+                app:layout_constraintTop_toTopOf="@id/linearLayout3" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movie_companies"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/movie_desc" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movie_video_link"
@@ -206,13 +221,30 @@
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/movie_rating"></androidx.recyclerview.widget.RecyclerView>
 
-    <ImageView
+    <LinearLayout
         android:id="@+id/btnFavourites"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mainPicture"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="0dp"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:srcCompat="@drawable/favorite_48px" />
+        app:layout_constraintTop_toBottomOf="@+id/mainPicture">
+
+        <ImageView
+            android:id="@+id/btnFavouritesSrc"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            app:srcCompat="@drawable/favorite_48px" />
+
+        <TextView
+            android:id="@+id/favTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add to Favourites" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

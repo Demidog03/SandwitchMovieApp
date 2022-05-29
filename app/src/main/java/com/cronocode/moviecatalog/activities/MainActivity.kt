@@ -84,16 +84,16 @@ class MainActivity : AppCompatActivity() {
 
 
         /**OnClickListeners */
-        seeMorePopular.setOnClickListener{
+        seeMoreHorror.setOnClickListener{
             startActivity(Intent(this, movie_list_upcoming::class.java))
         }
-        seeMoreTopRated.setOnClickListener{
+        seeMoreAnimation.setOnClickListener{
             startActivity(Intent(this, movie_list_top_rated::class.java))
         }
-        seeMoreNowPlaying.setOnClickListener{
+        seeMoreComedy.setOnClickListener{
             startActivity(Intent(this, movie_list_now_playing::class.java))
         }
-        seeMorePopular1.setOnClickListener{
+        seeMoreAdventure.setOnClickListener{
             startActivity(Intent(this, movie_list_popular::class.java))
         }
         profileBtn.setOnClickListener(View.OnClickListener {

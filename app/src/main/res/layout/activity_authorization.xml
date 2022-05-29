@@ -71,25 +71,29 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Sign Up?"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/loginBtn"
             app:layout_constraintStart_toStartOf="@+id/loginBtn"
             app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
         <Button
             android:id="@+id/loginBtn"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/black_rounded_bg"
             android:backgroundTint="@color/gray"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:text="Login"
             android:textAllCaps="false"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/googleBtn"
-            app:layout_constraintStart_toStartOf="@+id/googleBtn"
-            app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
+            android:textSize="20sp"
+            app:backgroundTint="@color/gray"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <LinearLayout
             android:id="@+id/googleBtn"
@@ -103,9 +107,9 @@
             android:paddingTop="5dp"
             android:paddingRight="15dp"
             android:paddingBottom="5dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintEnd_toEndOf="@+id/signUpBtn"
+            app:layout_constraintStart_toStartOf="@+id/signUpBtn"
+            app:layout_constraintTop_toBottomOf="@+id/signUpBtn">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -127,17 +131,15 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView"
-            android:layout_width="300dp"
+            android:layout_width="220dp"
             android:layout_height="250dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.04000002"
             app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/spirited_away" />
+            app:lottie_rawRes="@raw/sandwich" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"

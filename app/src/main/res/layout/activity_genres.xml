@@ -56,14 +56,14 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center_vertical"
-                android:text="Action"
+                android:text="Horror"
                 android:textColor="@color/pale_black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/seeMoreTopRated"
+                android:id="@+id/seeMoreAnimation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -102,7 +102,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rv_genre_adventure" />
 
             <TextView
-                android:id="@+id/seeMorePopular"
+                android:id="@+id/seeMoreHorror"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -158,7 +158,7 @@
                 app:reverseLayout="true" />
 
             <TextView
-                android:id="@+id/seeMoreNowPlaying"
+                android:id="@+id/seeMoreComedy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -184,7 +184,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rv_genre_action" />
 
             <TextView
-                android:id="@+id/seeMorePopular1"
+                android:id="@+id/seeMoreAdventure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -220,7 +220,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rv_genre_comedy" />
 
             <TextView
-                android:id="@+id/seeMorePopular2"
+                android:id="@+id/seeMoreCrime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -292,9 +292,19 @@
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
                 app:layout_constraintTop_toBottomOf="@+id/rv_genre_documentary" />
-
             <TextView
                 android:id="@+id/seeMoreDrama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+
+                android:layout_marginEnd="16dp"
+                android:text="See more"
+                android:textColor="@color/pale_black"
+                app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                app:layout_constraintEnd_toEndOf="parent" />
+            <TextView
+                android:id="@+id/seeMoreDocumentary1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"

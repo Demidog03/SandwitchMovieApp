@@ -32,9 +32,37 @@
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".activities.Detail"
+            android:name=".activities.genres.genre_list_horror"
             android:screenOrientation="portrait"
             android:exported="false" />
+        <activity
+            android:name=".activities.genres.genre_list_adventure"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".activities.genres.genre_list_animation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".activities.genres.genre_list_comedy"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".activities.genres.genre_list_crime"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".activities.genres.genre_list_documentary"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".activities.genres.genre_list_drama"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Detail"
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".activities.Profile"
             android:screenOrientation="portrait"

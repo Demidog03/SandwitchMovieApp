@@ -62,7 +62,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/seeMoreTopRated"
+                android:id="@+id/seeMoreAnimation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -99,7 +99,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rv_movies_list" />
 
             <TextView
-                android:id="@+id/seeMorePopular"
+                android:id="@+id/seeMoreHorror"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -115,9 +115,10 @@
                 android:id="@+id/rv_movies_list2"
                 android:layout_width="0dp"
                 android:layout_height="270dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
                 app:reverseLayout="true" />
@@ -154,7 +155,7 @@
                 app:reverseLayout="true" />
 
             <TextView
-                android:id="@+id/seeMoreNowPlaying"
+                android:id="@+id/seeMoreComedy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -191,7 +192,7 @@
                 app:reverseLayout="true" />
 
             <TextView
-                android:id="@+id/seeMorePopular1"
+                android:id="@+id/seeMoreAdventure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -207,9 +208,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/black_rounded_bg"
                 android:text="Check movies by genres"
-                app:layout_constraintTop_toBottomOf="@+id/rv_movies_list4"
-                tools:layout_editor_absoluteX="91dp" />
+                app:backgroundTint="@color/gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_movies_list4" />
 
             <!--            <ImageView-->
             <!--                android:layout_width="wrap_content"-->

@@ -9,11 +9,16 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.cronocode.moviecatalog.R
 import com.cronocode.moviecatalog.databinding.ActivityProfileBinding
+import com.cronocode.moviecatalog.models.Movie
+import com.cronocode.moviecatalog.models.MovieResponse
 import com.cronocode.moviecatalog.models.User
 import com.cronocode.moviecatalog.services.AuthService
+import com.cronocode.moviecatalog.services.MovieApiInterface
+import com.cronocode.moviecatalog.services.MovieApiService
 import com.cronocode.moviecatalog.services.RetrofitClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -25,7 +30,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.activity_movie_list.*
 import kotlinx.android.synthetic.main.activity_profile.*
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
@@ -36,6 +44,7 @@ import retrofit2.Response
 class Profile : AppCompatActivity() {
     private lateinit var pref: SharedPreferences
     private var `object` = JSONObject()
+    private var `favos` = JSONArray()
     private lateinit var  authService: AuthService
     private lateinit var binding: ActivityProfileBinding
     private lateinit var auth: FirebaseAuth
@@ -43,7 +52,7 @@ class Profile : AppCompatActivity() {
     private lateinit var user: User
     private lateinit var username: String
     private lateinit var mGoogleSignInClient: GoogleSignInClient
-
+    private lateinit var favList: Call<List<JSONObject>?>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,6 +105,8 @@ class Profile : AppCompatActivity() {
                         Glide.with(this@Profile)
                             .load(user.profile)
                             .into(binding.profilePic)
+                        rv_favourites_list.visibility = View.GONE
+                        dancingDog.visibility = View.VISIBLE
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -104,6 +115,58 @@ class Profile : AppCompatActivity() {
 
                 })
         }
+        if(jsonTokenString!="") {
+            val mJSONUser = JSONObject(jsonTokenString)
+            val userId = mJSONUser.get("userId").toString()
+            val call: Call<Any?>? = authService.getFavourites(userId)
+            call?.enqueue(object : Callback<Any?> {
+
+                override fun onResponse(call: Call<Any?>?, response: Response<Any?>) {
+                    try {
+                        `favos` = JSONArray(Gson().toJson(response.body()))
+                        Log.e("TAG", "onResponse: $`favos`")
+
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                    if (response.isSuccessful) {
+                        val movieFav: Int = JSONArray(`favos`.toString()).length()
+                        val movieList: MutableList<Movie> = ArrayList()
+                        //Favourites
+                        rv_favourites_list.layoutManager = LinearLayoutManager(applicationContext)
+                        rv_favourites_list.setHasFixedSize(true)
+
+                        for (i in 0 until movieFav) {
+                            val movieFavEach = JSONObject(`favos`[i].toString())
+                            val movieId = movieFavEach.get("movieId")
+                            getGenreByMovieId("${movieId}") { movie: Movie ->
+                                rv_favourites_list.adapter = MovieFavAdapter(movie, "vertical") {
+
+                                }
+                                movieList.add(movie)
+                                Log.e("TAG", "Movie: ${movieList.size}")
+                            }
+                        }
+
+                        rv_favourites_list.layoutManager = LinearLayoutManager(applicationContext)
+                        rv_favourites_list.setHasFixedSize(true)
+                        getMovieData {
+                            rv_favourites_list.adapter = MovieAdapter(movieList, "vertical") {
+                                val intent = Intent(applicationContext, Detail::class.java)
+                                intent.putExtra(MainActivity.INTENT_PARCELABLE, it)
+                                startActivity(intent)
+                            }
+                        }
+
+
+                    }
+                }
+
+                override fun onFailure(call: Call<Any?>?, t: Throwable?) {}
+            })
+        }
+
+
 //Button and OnClickers
         val homeBtn = findViewById<ImageView>(R.id.homeBtn)
         val searchBtn = findViewById<ImageView>(R.id.searchBtn)
@@ -134,6 +197,31 @@ class Profile : AppCompatActivity() {
         }
 
     }
+    private fun getGenreByMovieId(movieId: String, callback: (Movie) -> Unit){
+        val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
+        apiService.getCompanyOrGenreByMovieId("$movieId", "da0213edba5ce29d325c43cfec6aeab5").enqueue(object : Callback<Movie> {
+            override fun onFailure(call: Call<Movie>, t: Throwable) {
 
+            }
+
+            override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                return callback(response.body()!!)
+            }
+
+        })
+    }
+    private fun getMovieData(callback: (List<Movie>) -> Unit){
+        val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
+        apiService.getMovieList("upcoming", "bbf5a3000e95f1dddf266b5e187d4b21").enqueue(object : Callback<MovieResponse> {
+            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
+                return callback(response.body()!!.movies)
+            }
+
+        })
+    }
 
 }
